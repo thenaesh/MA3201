@@ -1,0 +1,120 @@
+\documentclass[]{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+
+%opening
+\title{MA3201 HW1}
+\author{Thenaesh Elango (A0124772E)}
+
+\begin{document}
+\maketitle
+
+
+\section*{Q1}
+	\paragraph{a}
+	Suppose $S$ is a subring of a field $F$ containing the identity ($1 \in S$, so $S$ is not the zero ring).\newline
+	Suppose $S$ is not an integral domain i.e. $\exists a,b \in S: a,b \not= 0 \wedge a \times b = 0$.\newline
+	Since $S \subseteq F$, this implies that $\exists a,b \in F: a,b \not= 0 \wedge a \times b = 0$.\newline
+	Then $F$ is not an integral domain, which contradicts the fact that $F$ is a field and hence has to be an integral domain. QED.
+	\paragraph{b}
+	Suppose $R$ is an integral domain where, for some $x \in R$, $x^2 = 1$.\newline
+	It follows that $x^2 - 1 = 0$.\newline
+	But $(x - 1)(x + 1) = x^2 + -(1x) + 1x + 1 = x^2 + 0 - 1 = x^2 - 1$, so $(x - 1)(x + 1) = 0$.\newline
+	As $R$ is an integral domain, $0$ is the only zero divisor of $R$, so either $x - 1 = 0$ or $x + 1 = 0$.\newline
+	In the former case, $x = 1$; in the latter case, $x = -1$.\newline
+	Thus, $x = \pm 1$. QED.
+
+\section*{Q2}
+	\paragraph{a}
+	Suppose $x \in R$ is nilpotent.\newline
+	Clearly, $x$ may be zero, as $0^m = 0 \ \forall m \in \mathbb{Z}^+$.\newline
+	Suppose $x$ is nonzero. Since $\exists m \in \mathbb{Z}^+$ such that $x^m = 0$, $\exists k \in \mathbb{Z}^+,\ k < m$ such that $x^k \times x = 0$. This shows that $x$ is necessarily a zero divisor.\newline
+	Thus, $x$ is either zero or a zero divisor. QED.
+	\paragraph{b}
+	Suppose $x \in R$ is nilpotent i.e. $\exists m \in \mathbb{Z}+$ such that $x^m = 0$.\newline
+	Then, $\forall r \in R$, $r^m \times x^m = 0$, so $(rx)^m = 0$ (commutativity of multiplication).\newline
+	This shows that $rx$ is also nilpotent. QED.
+	\paragraph{c}
+	Suppose $x \in R$ is nilpotent.\newline
+	Since $1 \in R$, $-1 \in R$, so $y = -x \in R$ is nilpotent (by (b)).\newline
+	Let $m \in \mathbb{Z}^+$ such that $x^m = 0$ i.e. $y^m = 0$.\newline
+	Then $(1 - y)(1 + y + y^2 + ... + y^{m-1}) = 1 - y + y - y^2 + y^2 - y^3 + ... + y^{m-1} - y^m = 1 - y^m = 1 - 0 = 1$.\newline
+	Since $1 + x = 1 - y$, $(1 + x)(1 + y + y^2 + ... + y^{m-1}) = 1$.\newline
+	Thus, $1 + x$ is a unit in $R$. QED.
+	\paragraph{d}
+	Let $x \in R$ be nilpotent and $z \in R$ be a unit.\newline
+	Let $y \in R$ such that $yz = 1$. This $y$ exists since $z$ is a unit.\newline
+	By (b), we see that $xy$ is nilpotent.\newline
+	By (c), we see that $(1 + xy)$ is a unit.\newline
+	Let $k \in R$ such that $(1 + xy)k = 1$.\newline
+	Then $(x + z)ky = (xyz + z)ky = (xy + 1)zky = (1 + xy)kyz = 1$, so $x+z$ has inverse $ky \in R$.\newline
+	Thus, $(x+z)$ is a unit in $R$.	
+
+\section*{Q3}
+	\paragraph{Backward Proof}
+	Suppose $\exists b \in R - \{0\}$ such that $bp(x) = 0$.\newline
+	Let $q(x) = b$ i.e. $q(x) = \sum_{n = 0}^{\infty} a_nx^n$ where $a_0 = b$ and $a_n = 0\ \forall n > 0$.\newline
+	Clearly, $q(x)$ is a nonzero element in $R[x]$.\newline
+	Due to the way polynomial multiplication is defined, $\forall \alpha \in R: p(\alpha)q(\alpha) = bp(\alpha) = 0 \in R$, so we can conclude that $p(x)q(x) = 0 \in R[x]$.\newline
+	Therefore, $p(x)$ is a zero divisor in $R[x]$.
+	\paragraph{Forward Proof}
+	Suppose $p(x)$ is a zero divisor in $R[x]$.\newline
+	Then $\exists q(x) \in R[x] - \{0\}$ such that $p(x)q(x) = 0$.\newline
+	Let $p(x) = \sum_{n = 0}^{\infty} a_nx^n$ and $q(x) = \sum_{n = 0}^{\infty} b_nx^n$.\newline
+	Then, $\forall n \in \mathbb{Z}^+: \sum_{k = 0}^{n} a_kb_{n-k} = 0$.
+
+\section*{Q4}
+	\paragraph{b}
+	\begin{align*}
+	(1-x)(1 + x + x^2 + ...)
+		&= (1 - x)\sum_{n = 0}^{\infty} x^n \\
+		&= \sum_{n = 0}^{\infty} x^n - \sum_{n = 0}^{\infty} x^{n+1} \\
+		&= \sum_{n = 0}^{\infty} x^n - \sum_{n = 1}^{\infty} x^n \\
+		&= 1 + \sum_{n = 1}^{\infty} x^n - \sum_{n = 1}^{\infty} x^n \\
+		&= 1
+	\end{align*}
+	QED.
+	\paragraph{c}
+	Forward Proof:\newline
+	Suppose $\sum_{n=0}^{\infty} a_nx^n$ is a unit in $R[[x]]$.\newline
+	Then there exists a series $\sum_{n=0}^{\infty} b_nx^n$ such that $(\sum_{n=0}^{\infty} a_nx^n)(\sum_{n=0}^{\infty} b_nx^n) = 1$.\newline
+	The coefficient of $x^0$, which is $a_0b_0$ by the rules of series multiplication, has to be $1$, implying that $a_0$ has an inverse $b_0$ in $R$.\newline
+	Therefore, $a_0$ is a unit in $R$.\newline
+	QED.\newline
+	
+	Backward Proof:\newline
+	Suppose $a_0$ is a unit in $R$. Let $a_0^{-1}$ denote its inverse.\newline
+	Given any series $\sum_{n=0}^{\infty} a_nx^n$, construct another series $\sum_{n=0}^{\infty} b_nx^n$ inductively as follows:
+	\begin{align*}
+	b_0 &= a_0^{-1}\\
+	\forall n \in \mathbb{Z}^+: b^n &= b^0(-\sum_{k=0}^{n-1} a_{n-k}b_k)
+	\end{align*}
+	Then, for $\sum_{n=0}^{\infty} c_nx^n = (\sum_{n=0}^{\infty} a_nx^n)(\sum_{n=0}^{\infty} b_nx^n)$,\newline
+	\begin{align*}
+	c_0 &= a_0b_0 &= 1\\
+	\forall n \in \mathbb{Z}^+: c_n &= \sum_{k=0}^{n} a_{n-k}b_k\\
+	&= \sum_{k=0}^{n-1} a_{n-k}b_k + a_0b_n\\
+	&= \sum_{k=0}^{n-1} a_{n-k}b_k + a_0b_0(-\sum_{n=0}^{n-1} a_{n-k}b_k)\\
+	&= \sum_{k=0}^{n-1} a_{n-k}b_k + -\sum_{k=0}^{n-1} a_{n-k}b_k &= 0
+	\end{align*}
+	Therefore, $\sum_{n=0}^{\infty} c_nx^n$ is the identity in $R[[x]]$,\newline
+	so $\sum_{n=0}^{\infty} a_nx^n$ is a unit in $R[[x]]$.\newline
+	QED.
+
+\section*{Q5}
+	Suppose $R$ is an integral domain.\newline
+	Let $f(x) = \sum_{n=0}^{\infty} a_nx^n$ and $g(x) = \sum_{n=0}^{\infty} b_nx^n$ be two nonzero elements in $R[[x]]$.\newline
+	Let the product $f(x)g(x) = \sum_{n=0}^{\infty} c_nx^n$.\newline
+	Let $a_p$ and $b_q$ be the smallest nonzero coefficients in $f(x)$ and $g(x)$ respectively.\newline
+	Then $c_{p+q} = \sum_{k=0}^{p+q} a_{p+q-k}b_k$.\newline
+	When $k < q$, $b_k = 0$ i.e. $a_{p+q-k}b_k = 0$.\newline
+	When $k > q$, $p+q-k < p$ i.e. $a_{p+q-k} = 0$ i.e. $a_{p+q-k}b_k = 0$.\newline
+	When $k = q$, $p+q-k = p$, i.e. $a_{p+q-k}b_k = a_pb_q$, which is nonzero since $R$ is an integral domain.\newline
+	Therefore, $c_p+q = a_pb_q \not= 0$.\newline
+	Since one of the coefficients of $f(x)g(x)$ is nonzero, $f(x)g(x)$ itself is nonzero.\newline
+	Since the product of two nonzero elements in $R[[x]]$ is always a nonzero element, there are no zero divisors in $R[[x]]$ that are themselves nonzero.\newline
+	Therefore, $R[[x]]$ is an integral domain.\newline
+	QED.
+	
+	
+\end{document}

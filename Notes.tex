@@ -1,0 +1,38 @@
+\documentclass[]{article}
+
+%opening
+\title{MA3201 Notes}
+\author{Thenaesh Elango}
+
+\begin{document}
+
+\maketitle
+
+\section*{Rings}
+	\paragraph{Definition*}
+	A ring $(R,+,*)$ is a set $R$ with corresponding binary operations $+,* : R \times R \rightarrow R$ such that:
+	\begin{itemize}
+		\item $(R,+)$ forms an Abelian group with
+		\begin{itemize}
+			\item the identity $0 \in R$
+			\item the inverse operator $- : R \rightarrow R$
+		\end{itemize}
+		\item $*$ is associative and commutative
+		\item $*$ is distributive over $+$ ($\forall a,b,c: (a+b)*c = a*b + a*c$)
+		\item $1 \in R$ is the identity under $*$
+	\end{itemize}
+	*Note that this ring is \emph{commutative} and \emph{has a multiplicative identity}. This is not true for more general rings.
+	
+	\paragraph{Zero Ring} The ring (denoted $\{0\}$) containing a singleton which is called $0$ (the multiplicative identity is also $0$)
+	\paragraph{Zero Divisor} $\{x \in R | \exists b \in R (b \not= 0 \wedge a*b = 0)\}$ (note that $0$ is NOT a zero divisor in the zero ring, but is in every other ring)
+	\paragraph{Invertible Element} an element in $R$ that has an inverse under multiplication (note that $0$ IS invertible in the zero ring, but not anywhere else)
+	\paragraph{Multiplicative Group}  $R^\times$, the set of invertible elements in $R$, which is itself an Abelian group under multiplication
+
+\section{Fields}
+	\paragraph{Definition}
+	A ring $(F,+,*)$ where
+	\begin{itemize}
+		\item $F \not= \{0\}$
+		\item $F^\times = F - \{0\}$
+	\end{itemize}
+\end{document}

@@ -1,0 +1,68 @@
+\documentclass[]{article}
+\usepackage{mathtools}
+\usepackage{amsfonts}
+
+%opening
+\title{MA3201 HW4}
+\author{Thenaesh Elango}
+
+\begin{document}
+\newcommand{\overbar}[1]{\mkern 1.5mu\overline{\mkern-1.5mu#1\mkern-1.5mu}\mkern 1.5mu}
+\maketitle
+
+\section*{Q1}
+	\paragraph{Lemma 1A}
+	We claim that $\overbar{1}, \overbar{x}, \dots, \overbar{x^{n-1}}$ is a linearly independent set in $F[x]/(f(x))$.\newline
+	Suppose $\sum_{k=0}^{n-1} a_k\overbar{x^k} = 0 \in F[x]/(f(x))$.\newline
+	But $0$ is the zero polynomial in the quotient ring, which may be written as $\sum_{k=0}^{n-1} 0x^k$.\newline
+	So, $\sum_{k=0}^{n-1} a_k\overbar{x^k} = \sum_{k=0}^{n-1} 0\overbar{x^k}$.\newline
+	By comparing coefficients, $a_0 = a_1 = \dots = a_{n-1} = 0 \in F$.\newline
+	QED.
+	\paragraph{Lemma 1B}
+	We claim that $\overbar{1}, \overbar{x}, \dots, \overbar{x^{n-1}}$ spans $F[x]/(f(x))$.\newline
+	Suppose $\overbar{g(x)} \in F[x](f(x))$.\newline
+	Then $g(x) = q(x)f(x) + r(x)$, where $g(x), q(x), r(x) \in F[x]$, $deg(r) < n$ and $\overbar{r(x)} = \overbar{g(x)}$.\newline
+	Since $r(x) \in F[x]$ has degree $< n$, we may write $r(x) = a_0 + a_1x + \dots + a_{n-1}x^{n-1}$.\newline
+	But also because $r(x)$ has degree $< n$, we may write $\overbar{g(x)} = \overbar{r(x)} = a_0\overbar{1} + a_1\overbar{x} + \dots + a_{n-1}\overbar{x^n}$.\newline
+	We can therefore see that we can write any $\overbar{g(x)} \in F[x](f(x))$ as a linear combination of $\overbar{1}, \overbar{x}, \dots, \overbar{x^{n-1}}$.\newline
+	QED.
+	\paragraph{}
+	We can conclude from Lemmas 1A and 1B that $\overbar{1}, \overbar{x}, \dots, \overbar{x^{n-1}}$ is a basis for $F[x]/(f(x))$.\newline
+	Therefore, any $\overbar{g(x)} \in F[x]/(f(x))$ can be written as a unique linear combination $a_0\overbar{1} + a_1\overbar{x} + \dots + a_{n-1}\overbar{x^n}$.\newline
+	Define $g_0(x) \in F[x]$ as $g_0(x) = a_0 + a_1x + \dots + a_{n-1}x^{n-1}$.\newline
+	Since $deg(g_0) < n$, $\overbar{g_0(x)}$ may be written uniquely as $a_0\overbar{1} + a_1\overbar{x} + \dots + a_{n-1}\overbar{x^n}$.\newline
+	We see that $g_0(x)$ is the unique polynomial of degree $< n$ such that $\overbar{g(x)} = \overbar{g_0(x)}$.\newline
+	QED.
+
+
+\section*{Q2}
+	\paragraph{a}
+	Given a polynomial $f(x) \in F[x]$ of degree $n$, any $\overbar{g(x)} \in F[x]/(f(x))$ may be written as $\sum_{k=0}^{n-1} a_k\overbar{x^k}$.\newline
+	Since $F$ is a finite field of order $q$, there are $q$ choices for each $a_k$ and therefore $q^n$ choices for $a_0, \dots, a_{n-1}$.\newline
+	Since there are $q^n$ ways to write $\sum_{k=0}^{n-1} a_k\overbar{x^k}$, there are $q^n$ ways to pick $\overbar{g(x)} \in F[x]/(f(x))$.\newline
+	Therefore, $F[x]/(f(x))$ has $q^n$ elements.
+	\paragraph{b}
+	\subparagraph{Lemma 2}
+	We claim that for any $f(x), f_1(x), f_2(x) \in F[x]$, $f(x) = f_1(x)f_2(x) \implies deg(f) = deg(f_1) + deg(f_2)$.\newline
+	We note that $F$ is a field and hence an integral domain.\newline
+	Let the coefficient of $x^{deg(f_1)}$ the highest power in $f_1$ be $a$.\newline
+	Let the coefficient of $x^{deg(f_2)}$ the highest power in $f_2$ be $b$.\newline
+	Then the coefficient of $x^{deg(f_1) + deg(f_2)}$, the highest power in $f$, is $ab$, which is nonzero since $a$ and $b$ are nonzero.\newline
+	QED.
+	\subparagraph{}
+	Suppose $f(x) \in F[x]$ is not irreducible.\newline
+	Then $\exists p(x), q(x) \in F[x]$ such that $f(x) = p(x)q(x)$ and $deg(p), deg(q) > 0$.\newline
+	Write $p(x) = \sum_{k=0}^{\alpha} a_kx^k$ and $q(x) = \sum_{k=0}^{\beta} b_kx^k$
+	By Lemma 2, $deg(f) = deg(p) + deg(q)$, so we can conclude that $deg(p), deg(q) \le deg(f)$.\newline
+	Since $deg(p), deg(q) > 0$, the above inequality is strict i.e. $deg(p), deg(q) < deg(f)$.\newline
+	Since $deg(p) < deg(f)$, $\overbar{p(x)} = \sum_{k=0}^{\alpha} a_k\overbar{x^k}$.\newline
+	Since $deg(q) < deg(f)$, $\overbar{q(x)} = \sum_{k=0}^{\beta} b_k\overbar{x^k}$.\newline
+	But then $\overbar{p(x)}\overbar{q(x)} = \overbar{p(x)q(x)} = \overbar{f(x)} = 0 \in F[x]/(f(x))$, so $\overbar{p(x)}$, which is nonzero since $deg(p) > 0 > -\infty$, is a zero divisor.\newline
+	Therefore, $F[x]/(f(x))$ is not an integral domain and hence not a field.
+	\subparagraph{}
+	Suppose $f(x) \in F[x]$ is irreducible.\newline
+	Let $I$ be an ideal such that $(f(x)) \subset I \subseteq F[x]$.\newline
+	Let $g(x) \in I - (f(x))$. Then $f(x)$ is not a factor of $g(x)$.\newline
+	
+	SHOW: $(f(x))$ is a max ideal, so $F[x]/(f(x))$ is a field.
+\end{document}
